@@ -1,19 +1,7 @@
-interface Post {
-    id: number;
-    title: string;
-    body: string;
-    userId: number;
-}
+import type {Post} from "$lib/types";
 
 class PostService {
     data: Post[] = $state([]);
-
-    //this is use to simulate a list with partial data loaded at the beginning
-    async getPosts(): Promise<number[]> {
-        const response = await fetch('https://jsonplaceholder.typicode.com/posts');
-        const data: Post[] = await response.json();
-        return data.map((post) => post.id);
-    }
 
     //this is use to download the full data of a post and return its index in the data array
     async getPost(id: number): Promise<number> {
